@@ -17,6 +17,7 @@ Topic service with basic CRUD operations and autentication whit JWT (Json web to
 - Loombok
 - Spring Security
 - Validation
+- Jwt (v. 4.2.0)
 
                                         ENTITY DIAGRAM 
   ![img_1.png](img_1.png)

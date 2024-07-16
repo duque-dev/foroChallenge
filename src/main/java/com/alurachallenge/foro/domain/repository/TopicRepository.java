@@ -1,10 +1,8 @@
-package com.alurachallenge.foro.repository;
+package com.alurachallenge.foro.domain.repository;
 
-import com.alurachallenge.foro.model.Topic;
+import com.alurachallenge.foro.domain.model.Topic;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
-import java.util.Optional;
 
 @Repository
 public interface TopicRepository extends JpaRepository<Topic, Long> {

@@ -1,8 +1,8 @@
-package com.alurachallenge.foro.service;
+package com.alurachallenge.foro.infrastructure.service;
 
-import com.alurachallenge.foro.model.Topic;
-import com.alurachallenge.foro.mapper.TopicDTO;
-import com.alurachallenge.foro.repository.TopicRepository;
+import com.alurachallenge.foro.domain.model.Topic;
+import com.alurachallenge.foro.domain.mapper.TopicDTO;
+import com.alurachallenge.foro.domain.repository.TopicRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

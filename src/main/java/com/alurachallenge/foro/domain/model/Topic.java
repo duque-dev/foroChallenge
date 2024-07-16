@@ -1,4 +1,4 @@
-package com.alurachallenge.foro.model;
+package com.alurachallenge.foro.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;

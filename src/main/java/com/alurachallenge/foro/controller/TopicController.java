@@ -1,8 +1,8 @@
 package com.alurachallenge.foro.controller;
 
-import com.alurachallenge.foro.mapper.TopicDTO;
-import com.alurachallenge.foro.model.Topic;
-import com.alurachallenge.foro.service.TopicService;
+import com.alurachallenge.foro.domain.mapper.TopicDTO;
+import com.alurachallenge.foro.domain.model.Topic;
+import com.alurachallenge.foro.infrastructure.service.TopicService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;

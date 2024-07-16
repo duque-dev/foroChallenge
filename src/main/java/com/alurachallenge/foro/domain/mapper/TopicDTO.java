@@ -1,4 +1,4 @@
-package com.alurachallenge.foro.mapper;
+package com.alurachallenge.foro.domain.mapper;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
