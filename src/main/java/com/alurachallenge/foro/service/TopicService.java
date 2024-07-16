@@ -18,9 +18,12 @@ public class TopicService {
         this.topicRepository = topicRepository;
     }
 
-
     public void saveTopic(TopicDTO topicDTO){
         Topic topic = new Topic(topicDTO.title(),topicDTO.message(),topicDTO.status(),topicDTO.relatedCourse(),topicDTO.createdDate());
+        topicRepository.save(topic);
+    }
+
+    public void updateTopic(Topic topic){
         topicRepository.save(topic);
     }
     public Optional<Topic> findById(Long id) {
@@ -29,6 +32,7 @@ public class TopicService {
     public List<Topic> findAll() {
         return topicRepository.findAll();
     }
+
     public void deleteById(Long id){
         topicRepository.deleteById(id);
     }

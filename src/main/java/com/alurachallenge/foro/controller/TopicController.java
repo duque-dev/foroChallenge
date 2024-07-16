@@ -44,7 +44,22 @@ public class TopicController {
 
     }
 
+    @PutMapping("/{id}")
+    @Transactional
+    public void updateById(@PathVariable Long id,@RequestBody TopicDTO topicDTO){
+        Optional<Topic> updateTopic = topicService.findById(id);
+        if(updateTopic.isPresent()){
+            Topic topicToUpdate = updateTopic.get();
+            topicToUpdate.setTitle(topicDTO.title());
+            topicToUpdate.setMessage(topicDTO.message());
+            topicToUpdate.setRelatedCourse(topicDTO.relatedCourse());
+
+            topicService.updateTopic(topicToUpdate);
+        }
+    }
+
     @GetMapping
+    @Transactional
     public List<TopicDTO> findAll() {
         List<Topic> topicList = topicService.findAll();
         List<TopicDTO> topicDTOList = new ArrayList<>();
@@ -63,7 +78,11 @@ public class TopicController {
     }
 
     @DeleteMapping("/{id}")
+    @Transactional
     public void deleteTopicById(@PathVariable Long id){
-        topicService.deleteById(id);
+        Optional<Topic> findDeleteTopic = topicService.findById(id);
+        if(findDeleteTopic.isPresent()){
+            topicService.deleteById(id);
+        }
     }
 }
