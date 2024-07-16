@@ -1,0 +1,69 @@
+package com.alurachallenge.foro.controller;
+
+import com.alurachallenge.foro.mapper.TopicDTO;
+import com.alurachallenge.foro.model.Topic;
+import com.alurachallenge.foro.service.TopicService;
+import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+
+@RestController
+@RequestMapping("/topic")
+public class TopicController {
+
+    @Autowired
+    private TopicService topicService;
+
+    @PostMapping
+    @Transactional
+    public TopicDTO saveTopic (@RequestBody @Valid TopicDTO topicDTO){
+        topicService.saveTopic(topicDTO);
+        return topicDTO;
+    }
+
+    @GetMapping("/{id}")
+    @Transactional
+    public TopicDTO findById(@PathVariable Long id){
+        Optional<Topic> topic = topicService.findById(id);
+        if(topic.isPresent()){
+            TopicDTO topicDTO = new TopicDTO(topic.get().getTitle(),
+                    topic.get().getMessage(),
+                    topic.get().getStatus(),
+                    topic.get().getRelatedCourse(),
+                    topic.get().getCreatedDate());
+            return topicDTO;
+        }else{
+            return null;
+        }
+
+    }
+
+    @GetMapping
+    public List<TopicDTO> findAll() {
+        List<Topic> topicList = topicService.findAll();
+        List<TopicDTO> topicDTOList = new ArrayList<>();
+
+        for (Topic topic : topicList) {
+            TopicDTO topicDTO = new TopicDTO(
+                    topic.getTitle(),
+                    topic.getMessage(),
+                    topic.getStatus(),
+                    topic.getRelatedCourse(),
+                    topic.getCreatedDate()
+            );
+            topicDTOList.add(topicDTO);
+        }
+        return topicDTOList;
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteTopicById(@PathVariable Long id){
+        topicService.deleteById(id);
+    }
+}
